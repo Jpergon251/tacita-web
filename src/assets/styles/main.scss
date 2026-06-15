@@ -1,0 +1,13 @@
+// pages
+@use './pages/homepage';
+
+// components
+@use './components/header';
+@use './components/footer';
+
+
+// base
+@use './base/global';
+@use './base/mixins';
+@use './base/variables';
+

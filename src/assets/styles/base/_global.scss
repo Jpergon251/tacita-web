@@ -1,0 +1,24 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh; // ocupa toda la pantalla
+
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; // ocupa toda la pantalla
+}
+
+.content {
+  flex: 1; // hace que el contenido empuje el footer hacia abajo
+  margin: auto;
+  max-width: 1200px;
+  padding: 20px;
+}

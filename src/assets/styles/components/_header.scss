@@ -1,0 +1,55 @@
+.header {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+
+    min-height: 90px;
+    padding: 10px 30px;
+
+    .navbar,
+    .actions {
+        min-width: 0;
+        flex-wrap: wrap;
+    }
+
+    .navbar {
+        display: flex;
+        gap: 20px;
+        justify-self: start;
+
+        a {
+            color: black;
+            text-decoration: none;
+        }
+    }
+
+    .logo {
+        justify-self: center;
+
+        img {
+            height: 90px;
+            display: block; // evita espacios raros del img inline
+        }
+    }
+
+    .actions {
+        display: flex;
+        gap: 20px;
+        justify-self: end;
+        align-items: center;
+        input {
+            outline: none;
+            border-radius: 12px;
+            padding: 10px 15px;
+        }
+        button {
+            border: none;
+            background: transparent;
+            color: black;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}
