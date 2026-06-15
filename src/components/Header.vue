@@ -16,6 +16,12 @@
       :class="{ active: isMenuOpen }"
     >
 
+
+      <button class="menu-toggle" @click="isMenuOpen = !isMenuOpen">
+        <Menu v-if="!isMenuOpen" />
+        <X v-else />
+      </button>
+
       <router-link to="/">
         Inicio
       </router-link>
@@ -50,11 +56,11 @@
     </section>
 
   </header>
+
 </template>
 
 <script setup>
-import { ref } from 'vue'
-
+import { ref} from 'vue'
 import {
   Bookmark,
   ShoppingBagIcon,
@@ -65,4 +71,5 @@ import {
 import Logo from './Logo.vue'
 
 const isMenuOpen = ref(false)
+
 </script>
