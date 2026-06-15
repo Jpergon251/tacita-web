@@ -60,7 +60,7 @@
 </template>
 
 <script setup>
-import { ref} from 'vue'
+import { ref , watch} from 'vue'
 import {
   Bookmark,
   ShoppingBagIcon,
@@ -72,4 +72,7 @@ import Logo from './Logo.vue'
 
 const isMenuOpen = ref(false)
 
+watch(isMenuOpen, (val) => {
+  document.body.style.overflow = val ? 'hidden' : ''
+})
 </script>
