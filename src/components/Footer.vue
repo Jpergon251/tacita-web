@@ -1,21 +1,52 @@
 <template>
-    <div class="footer">
-        <Logo/>
-        <nav class="social-buttons">
-            <a href="">
-                <Instagram class="icon"/>
-            </a>
-            <a href="">
-                <Facebook class="icon"/>
-            </a>
-            <a href="">
-                <Youtube class="icon"/>
-            </a>
-            <a href="">
-                <FontAwesomeIcon :icon="faTiktok" class="icon"/>
-            </a>
-        </nav>
-    </div>
+  <footer class="footer">
+
+    <Logo />
+
+    <nav class="social-buttons">
+
+      <a
+        href=""
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Instagram"
+      >
+        <Instagram class="icon" />
+      </a>
+
+      <a
+        href=""
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Facebook"
+      >
+        <Facebook class="icon" />
+      </a>
+
+      <a
+        href=""
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="YouTube"
+      >
+        <Youtube class="icon" />
+      </a>
+
+      <a
+        href=""
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="TikTok"
+      >
+        <FontAwesomeIcon
+          :icon="faTiktok"
+          class="icon"
+        />
+      </a>
+
+    </nav>
+
+  </footer>
 </template>
 <script setup>
 import { Facebook, Instagram, Youtube } from 'lucide-vue-next';

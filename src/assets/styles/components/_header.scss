@@ -52,4 +52,95 @@
             justify-content: center;
         }
     }
+
+    .menu-toggle {
+        display: none;
+    }
+}
+
+// ======================
+// TABLET
+// ======================
+
+@media (max-width: 1024px) {
+    .header {
+        padding: 10px 20px;
+
+        .navbar {
+            gap: 12px;
+
+            a {
+                font-size: .95rem;
+            }
+        }
+
+        .actions {
+            gap: 10px;
+
+            input {
+                width: 140px;
+            }
+        }
+
+        .logo img {
+            height: 75px;
+        }
+    }
+}
+
+// ======================
+// MOBILE
+// ======================
+
+@media (max-width: 768px) {
+
+    .header {
+        position: relative;
+    
+        .menu-toggle {
+            display: flex;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            z-index: 99999;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: -100%;
+
+            width: 280px;
+            height: 100vh;
+            z-index: 9999; 
+
+            background: white;
+
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+
+            padding: 100px 30px;
+            gap: 20px;
+
+            transition: left .3s ease;
+
+            box-shadow:
+                10px 0 30px rgba(0,0,0,.15);
+
+            &.active {
+                left: 0;
+            }
+
+            a {
+                font-size: 1.2rem;
+            }
+        }
+
+        .actions {
+            input {
+                display: none;
+            }
+        }
+    }
 }

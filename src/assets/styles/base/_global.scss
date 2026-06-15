@@ -1,24 +1,29 @@
-body{
+html, body {
+    height: 100%;
+}
+
+body {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 0;
-    min-height: 100vh; // ocupa toda la pantalla
-
 }
-*{
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
 .layout {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh; // ocupa toda la pantalla
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 .content {
-  flex: 1; // hace que el contenido empuje el footer hacia abajo
-  margin: auto;
-  max-width: 1200px;
-  padding: 20px;
+    flex: 1;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
 }
