@@ -41,6 +41,7 @@
                 type="button"
                 class="content-card__play"
                 :aria-label="`Reproducir ${content.title}`"
+                @click="handlePlay"
             >
                 <Play
                     :size="18"
@@ -86,6 +87,7 @@
             <button
                 type="button"
                 class="content-card__link"
+                @click="handlePlay"
             >
                 <span>Ver contenido</span>
 
@@ -102,13 +104,19 @@
 
 
 <script setup>
+
 import {
     ArrowUpRight,
     Play
 } from 'lucide-vue-next'
 
 
-defineProps({
+// =============================================================
+// PROPS
+// =============================================================
+
+const props = defineProps({
+
     content: {
         type: Object,
         required: true
@@ -118,5 +126,30 @@ defineProps({
         type: Number,
         default: 0
     }
+
 })
+
+
+// =============================================================
+// EVENTS
+// =============================================================
+
+const emit = defineEmits([
+    'play'
+])
+
+
+// =============================================================
+// PLAY
+// =============================================================
+
+const handlePlay = () => {
+
+    emit(
+        'play',
+        props.content
+    )
+
+}
+
 </script>
