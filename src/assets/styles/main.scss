@@ -4,10 +4,14 @@
 // components
 @use './components/header';
 @use './components/footer';
+@use './components/logo';
+
 
 
 // base
 @use './base/global';
 @use './base/mixins';
-@use './base/variables';
+// @use './base/variables';
+@use './base/variables2';
+@use './base/reset';
 
