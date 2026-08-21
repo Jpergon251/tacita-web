@@ -1,83 +1,293 @@
+// =============================================================
+// FOOTER
+// =============================================================
+
 .footer {
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    padding: 20px 40px;
+    width: 100%;
 
-    background-color: var(--accent-color);
+    padding:
+        1.5rem
+        clamp(1.25rem, 4vw, 3rem);
+
+    margin-top: auto;
+
+    background:
+        color-mix(
+            in srgb,
+            var(--color-bg) 90%,
+            transparent
+        );
+
+    border-top:
+        1px solid
+        color-mix(
+            in srgb,
+            var(--color-text) 12%,
+            transparent
+        );
+
+    // =========================================================
+    // LOGO
+    // =========================================================
 
     .logo {
-        width: 80px;
+        display: flex;
+        align-items: center;
+
+        width: clamp(4rem, 7vw, 5.5rem);
+
         flex-shrink: 0;
 
+
         img {
+            display: block;
+
             width: 100%;
             height: auto;
-            display: block;
+
+            object-fit: contain;
+
+            transition:
+                transform 0.25s ease;
+
+
+            &:hover {
+                transform: scale(1.03);
+            }
         }
     }
+
+
+    // =========================================================
+    // REDES SOCIALES
+    // =========================================================
 
     .social-buttons {
         display: flex;
         align-items: center;
-        gap: 16px;
+
+        gap: clamp(0.5rem, 1.5vw, 1rem);
+
 
         a {
-            width: 45px;
-            height: 45px;
-            padding: 5px;
             display: flex;
             align-items: center;
             justify-content: center;
 
-            color: var(--accent-color);
-            background-color: #ffffff85;
-            text-decoration: none;
+            width: 2.75rem;
+            height: 2.75rem;
+
+            padding: 0.6rem;
+
+            border:
+                1px solid
+                color-mix(
+                    in srgb,
+                    var(--color-text) 15%,
+                    transparent
+                );
 
             border-radius: 50%;
 
-            transition:
-                transform .2s ease,
-                background-color .2s ease;
+            color:
+                var(--color-text);
 
-            &:hover {
-                transform: translateY(-3px);
-            }
+            background:
+                color-mix(
+                    in srgb,
+                    var(--color-bg) 18%,
+                    transparent
+                );
+
+            text-decoration: none;
+
+            transition:
+                transform 0.2s ease,
+                color 0.2s ease,
+                background-color 0.2s ease,
+                border-color 0.2s ease;
+
 
             .icon {
                 width: 100%;
                 height: 100%;
             }
+
+
+            // -------------------------------------------------
+            // HOVER
+            // -------------------------------------------------
+
+            &:hover {
+                color:
+                    var(--color-primary);
+
+                background:
+                    var(--color-text);
+
+                border-color:
+                    var(--color-text);
+
+                transform:
+                    translateY(-3px);
+            }
+
+
+            // -------------------------------------------------
+            // FOCUS
+            // -------------------------------------------------
+
+            &:focus-visible {
+                outline:
+                    2px solid
+                    var(--color-text);
+
+                outline-offset: 4px;
+            }
+
+
+            // -------------------------------------------------
+            // ACTIVE
+            // -------------------------------------------------
+
+            &:active {
+                transform:
+                    translateY(-1px)
+                    scale(0.96);
+            }
         }
     }
 }
 
-// ======================
+
+// =============================================================
+// TABLET
+// =============================================================
+
+@media (max-width: 1024px) {
+
+    .footer {
+
+        padding:
+            1.35rem
+            1.5rem;
+
+
+        .logo {
+            width: 4.75rem;
+        }
+
+
+        .social-buttons {
+
+            a {
+                width: 2.6rem;
+                height: 2.6rem;
+
+                padding: 0.55rem;
+            }
+        }
+    }
+}
+
+
+// =============================================================
 // MOBILE
-// ======================
+// =============================================================
 
 @media (max-width: 768px) {
 
     .footer {
         flex-direction: column;
-        gap: 20px;
+
+        justify-content: center;
+
+        gap: 1.25rem;
+
+        padding:
+            1.75rem
+            1.25rem;
 
         text-align: center;
 
-        padding: 25px 20px;
+
+        // -----------------------------------------------------
+        // LOGO
+        // -----------------------------------------------------
 
         .logo {
-            width: 70px;
+            width: 4.5rem;
         }
 
+
+        // -----------------------------------------------------
+        // SOCIAL
+        // -----------------------------------------------------
+
         .social-buttons {
-            gap: 12px;
+            gap: 0.7rem;
+
 
             a {
-                width: 42px;
-                height: 42px;
+                width: 2.6rem;
+                height: 2.6rem;
+
+                padding: 0.55rem;
             }
+        }
+    }
+}
+
+
+// =============================================================
+// MOBILE PEQUEÑO
+// =============================================================
+
+@media (max-width: 480px) {
+
+    .footer {
+
+        padding:
+            1.5rem
+            1rem;
+
+
+        .logo {
+            width: 4rem;
+        }
+
+
+        .social-buttons {
+
+            gap: 0.55rem;
+
+
+            a {
+                width: 2.4rem;
+                height: 2.4rem;
+
+                padding: 0.5rem;
+            }
+        }
+    }
+}
+
+
+// =============================================================
+// REDUCCIÓN DE MOVIMIENTO
+// =============================================================
+
+@media (prefers-reduced-motion: reduce) {
+
+    .footer {
+
+        .logo img,
+        .social-buttons a {
+            transition: none;
         }
     }
 }

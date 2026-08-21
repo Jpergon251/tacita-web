@@ -1,5 +1,5 @@
-// =============================================================
-// TACITA STUDIO — DESIGN SYSTEM Color 1
+ // =============================================================
+// TACITA STUDIO — DESIGN SYSTEM Color 2
 // Andalucía contemporánea · Cádiz · Flamenco
 // =============================================================
 
@@ -18,51 +18,51 @@
     // Fondos
     // ---------------------------------------------------------
 
-    --color-bg: #f5efe5;
-    --color-bg-secondary: #eee2d2;
+    --color-bg: #F7F5FC;
+    --color-bg-secondary: #ECE9F7;
 
 
     // ---------------------------------------------------------
     // Superficies
     // ---------------------------------------------------------
 
-    --color-surface: #fffaf2;
-    --color-surface-elevated: #ffffff;
+    --color-surface: #FFFFFF;
+    --color-surface-elevated: #FFFFFF;
 
 
     // ---------------------------------------------------------
     // Texto
     // ---------------------------------------------------------
 
-    --color-text: #321d22;
-    --color-text-secondary: #684d47;
-    --color-text-disabled: #a99489;
+    --color-text: #211B3A;
+    --color-text-secondary: #625B78;
+    --color-text-disabled: #A7A1B8;
 
 
     // ---------------------------------------------------------
     // Marca
     // ---------------------------------------------------------
 
-    --color-primary: #c94b35;
-    --color-secondary: #8f3040;
-    --color-accent: #a86f45;
+    --color-primary: #2D1D9A;
+    --color-secondary: #5142B8;
+    --color-accent: #C47A4A;
 
 
     // ---------------------------------------------------------
     // UI
     // ---------------------------------------------------------
 
-    --color-border: #d9c5b4;
-    --color-hover: #aa3c2b;
+    --color-border: #DCD8EC;
+    --color-hover: #24157F;
 
 
     // ---------------------------------------------------------
     // Estados
     // ---------------------------------------------------------
 
-    --color-success: #367c4e;
-    --color-warning: #a87519;
-    --color-error: #b63e3e;
+    --color-success: #39845A;
+    --color-warning: #B47A18;
+    --color-error: #C44747;
 
 
     // =========================================================
@@ -92,15 +92,15 @@
 
     --shadow-sm:
         0 2px 8px
-        rgba(50, 29, 34, 0.08);
+        rgba(45, 29, 154, 0.08);
 
     --shadow-md:
         0 8px 24px
-        rgba(50, 29, 34, 0.10);
+        rgba(45, 29, 154, 0.10);
 
     --shadow-lg:
         0 16px 40px
-        rgba(50, 29, 34, 0.14);
+        rgba(45, 29, 154, 0.14);
 
 
     // =========================================================
@@ -139,9 +139,6 @@
     // LOGO
     // =========================================================
 
-    // 0 = normal
-    // 1 = invertido
-
     --logo-filter: none;
 }
 
@@ -160,51 +157,51 @@
     // Fondos
     // ---------------------------------------------------------
 
-    --color-bg: #171016;
-    --color-bg-secondary: #21151d;
+    --color-bg: #100D1D;
+    --color-bg-secondary: #18142B;
 
 
     // ---------------------------------------------------------
     // Superficies
     // ---------------------------------------------------------
 
-    --color-surface: #2a1c25;
-    --color-surface-elevated: #35232d;
+    --color-surface: #211B38;
+    --color-surface-elevated: #2B2447;
 
 
     // ---------------------------------------------------------
     // Texto
     // ---------------------------------------------------------
 
-    --color-text: #f1e5d8;
-    --color-text-secondary: #c4b0a4;
-    --color-text-disabled: #806e68;
+    --color-text: #F2F0FA;
+    --color-text-secondary: #BDB8D0;
+    --color-text-disabled: #746E88;
 
 
     // ---------------------------------------------------------
     // Marca
     // ---------------------------------------------------------
 
-    --color-primary: #e85a3f;
-    --color-secondary: #8f3040;
-    --color-accent: #c28a5b;
+    --color-primary: #7A6BE8;
+    --color-secondary: #968BFF;
+    --color-accent: #D39A68;
 
 
     // ---------------------------------------------------------
     // UI
     // ---------------------------------------------------------
 
-    --color-border: #49323c;
-    --color-hover: #f06a4e;
+    --color-border: #3B3458;
+    --color-hover: #8C7DFF;
 
 
     // ---------------------------------------------------------
     // Estados
     // ---------------------------------------------------------
 
-    --color-success: #4fa66a;
-    --color-warning: #d9a441;
-    --color-error: #d05252;
+    --color-success: #55B878;
+    --color-warning: #D7A43C;
+    --color-error: #E06464;
 
 
     // =========================================================
@@ -213,15 +210,15 @@
 
     --shadow-sm:
         0 2px 8px
-        rgba(0, 0, 0, 0.25);
+        rgba(0, 0, 0, 0.28);
 
     --shadow-md:
         0 8px 24px
-        rgba(0, 0, 0, 0.30);
+        rgba(0, 0, 0, 0.35);
 
     --shadow-lg:
         0 16px 40px
-        rgba(0, 0, 0, 0.40);
+        rgba(0, 0, 0, 0.45);
 
 
     // =========================================================
@@ -230,5 +227,3 @@
 
     --logo-filter: invert(1);
 }
-
-
