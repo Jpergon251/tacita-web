@@ -13,18 +13,18 @@
 
     width: 100%;
 
-    color: #ffffff;
+    color: var(--color-text);
 
-    background: transparent;
+    background-color: var(--color-bg);
 
-    backdrop-filter: blur(12px);
-
-    border-bottom: 1px solid transparent;
+    border-bottom:
+        1px solid
+        var(--color-border);
 
     transition:
         background-color var(--transition-normal),
         border-color var(--transition-normal),
-        backdrop-filter var(--transition-normal);
+        box-shadow var(--transition-normal);
 
 
     // =========================================================
@@ -60,16 +60,17 @@
     // LOGO
     // =========================================================
 
-    // El componente Logo tiene su propio SCSS.
-    // Aquí solamente controlamos su posición.
-
-    :deep(.logo) {
+    .logo {
         justify-self: start;
+
+        position: relative;
+
+        z-index: 2;
     }
 
 
     // =========================================================
-    // DESKTOP NAVIGATION
+    // NAVEGACIÓN DESKTOP
     // =========================================================
 
     &__nav {
@@ -96,9 +97,12 @@
             0;
 
         color:
-            rgba(255, 255, 255, 0.82);
+            var(--color-text-secondary);
 
         text-decoration: none;
+
+        font-family:
+            var(--font-family-base);
 
         font-size: 0.72rem;
         font-weight: 600;
@@ -142,8 +146,13 @@
         }
 
 
+        // -----------------------------------------------------
+        // HOVER
+        // -----------------------------------------------------
+
         &:hover {
-            color: #ffffff;
+            color:
+                var(--color-text);
 
             letter-spacing: 0.18em;
 
@@ -157,8 +166,13 @@
         }
 
 
+        // -----------------------------------------------------
+        // ACTIVO
+        // -----------------------------------------------------
+
         &.router-link-active {
-            color: #ffffff;
+            color:
+                var(--color-text);
 
 
             &::after {
@@ -169,6 +183,10 @@
             }
         }
 
+
+        // -----------------------------------------------------
+        // FOCUS
+        // -----------------------------------------------------
 
         &:focus-visible {
             outline:
@@ -199,6 +217,25 @@
 
 
     // =========================================================
+    // THEME BUTTON
+    // =========================================================
+
+    &__actions {
+
+        :deep(.theme-button) {
+            color:
+                var(--color-text);
+
+            filter: none;
+
+            transition:
+                color var(--transition-fast),
+                background-color var(--transition-fast);
+        }
+    }
+
+
+    // =========================================================
     // MENU BUTTON
     // =========================================================
 
@@ -215,13 +252,16 @@
 
         border:
             1px solid
+            var(--color-border);
+
+        border-radius:
+            var(--radius-full);
+
+        background:
             transparent;
 
-        border-radius: 50%;
-
-        background: transparent;
-
-        color: #ffffff;
+        color:
+            var(--color-text);
 
         cursor: pointer;
 
@@ -237,10 +277,10 @@
                 var(--color-primary);
 
             background:
-                rgba(255, 255, 255, 0.08);
+                var(--color-bg-secondary);
 
             border-color:
-                rgba(255, 255, 255, 0.15);
+                var(--color-primary);
         }
 
 
@@ -262,6 +302,9 @@
         &.is-active {
             color:
                 var(--color-primary);
+
+            border-color:
+                var(--color-primary);
         }
     }
 
@@ -280,47 +323,8 @@
     // =========================================================
 
     &--scrolled {
-        background:
-            color-mix(
-                in srgb,
-                var(--color-bg) 90%,
-                transparent
-            );
-
-        border-bottom:
-            1px solid
-            var(--color-border);
-
-        backdrop-filter:
-            blur(16px);
-
-
-        .header__link {
-            color:
-                var(--color-text-secondary);
-
-
-            &:hover,
-            &.router-link-active {
-                color:
-                    var(--color-text);
-            }
-        }
-
-
-        .header__menu-button {
-            color:
-                var(--color-text);
-
-
-            &:hover {
-                color:
-                    var(--color-primary);
-
-                background:
-                    var(--color-bg-secondary);
-            }
-        }
+        box-shadow:
+            var(--shadow-md);
     }
 }
 
@@ -392,7 +396,7 @@
         // LOGO
         // =====================================================
 
-        :deep(.logo) {
+        .logo {
             justify-self: center;
         }
 
@@ -448,8 +452,6 @@
 
             flex-direction: column;
 
-            justify-content: flex-start;
-
             gap: 0;
 
             padding:
@@ -468,7 +470,7 @@
                 1.5rem
                 0
                 4rem
-                rgba(0, 0, 0, 0.3);
+                rgba(0, 0, 0, 0.25);
 
             overflow-y: auto;
         }
@@ -517,6 +519,10 @@
                 padding-left var(--transition-fast);
 
 
+            // -------------------------------------------------
+            // NUMBER
+            // -------------------------------------------------
+
             span {
                 color:
                     var(--color-primary);
@@ -534,6 +540,10 @@
             }
 
 
+            // -------------------------------------------------
+            // HOVER
+            // -------------------------------------------------
+
             &:hover {
                 padding-left: 1rem;
 
@@ -542,11 +552,19 @@
             }
 
 
+            // -------------------------------------------------
+            // ACTIVE
+            // -------------------------------------------------
+
             &.router-link-active {
                 color:
                     var(--color-primary);
             }
 
+
+            // -------------------------------------------------
+            // FOCUS
+            // -------------------------------------------------
 
             &:focus-visible {
                 outline:
@@ -554,6 +572,46 @@
                     var(--color-primary);
 
                 outline-offset: 4px;
+            }
+        }
+
+
+        // =====================================================
+        // OVERLAY
+        // =====================================================
+
+        &::after {
+            content: "";
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 999;
+
+            background:
+                rgba(0, 0, 0, 0.5);
+
+            opacity: 0;
+
+            visibility: hidden;
+
+            pointer-events: none;
+
+            transition:
+                opacity var(--transition-normal),
+                visibility var(--transition-normal);
+        }
+
+
+        // Mostrar overlay cuando el menú está abierto.
+
+        &:has(.header__mobile-nav) {
+
+            &::after {
+                opacity: 1;
+
+                visibility: visible;
             }
         }
 
@@ -588,34 +646,8 @@
         }
 
 
-        // =====================================================
-        // OVERLAY
-        // =====================================================
+        // El drawer queda por encima del overlay.
 
-        &.header--scrolled {
-            .header__mobile-nav {
-                backdrop-filter: none;
-            }
-        }
-
-
-        &.header--scrolled::after {
-            content: "";
-
-            position: fixed;
-
-            inset: 0;
-
-            z-index: 999;
-
-            background:
-                rgba(0, 0, 0, 0.5);
-
-            pointer-events: none;
-        }
-
-
-        // El drawer está por encima del overlay.
         &__mobile-nav {
             z-index: 1001;
         }
@@ -634,14 +666,16 @@
         &__inner {
             min-height: 64px;
 
-            padding-inline: 0.5rem;
+            padding-inline:
+                0.5rem;
         }
 
 
-        :deep(.logo) {
+        .logo {
 
             img {
-                height: 3.25rem;
+                height:
+                    3.25rem;
             }
         }
 
@@ -662,7 +696,8 @@
 
 
         &__mobile-link {
-            font-size: 1.35rem;
+            font-size:
+                1.35rem;
         }
     }
 }

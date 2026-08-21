@@ -1,0 +1,338 @@
+// =============================================================
+// TACITA STUDIO — SEARCH BUTTON
+// =============================================================
+
+.search-button {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    min-width: 0;
+
+    // =========================================================
+    // TRIGGER
+    // =========================================================
+
+    &__trigger {
+        position: relative;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 2.5rem;
+        height: 2.5rem;
+
+        flex-shrink: 0;
+
+        padding: 0;
+
+        color: var(--color-text);
+
+        background: transparent;
+
+        border: 1px solid transparent;
+        border-radius: var(--radius-full);
+
+        cursor: pointer;
+
+        transition:
+            color var(--transition-fast),
+            background-color var(--transition-fast),
+            border-color var(--transition-fast),
+            transform var(--transition-fast);
+
+
+        &:hover {
+            color: var(--color-primary);
+
+            background-color:
+                color-mix(
+                    in srgb,
+                    var(--color-surface) 80%,
+                    transparent
+                );
+
+            border-color: var(--color-border);
+        }
+
+
+        &:active {
+            transform: scale(0.94);
+        }
+
+
+        &:focus-visible {
+            outline:
+                2px solid
+                var(--color-primary);
+
+            outline-offset: 3px;
+        }
+    }
+
+
+    // =========================================================
+    // FORMULARIO
+    // =========================================================
+
+    &__form {
+        position: absolute;
+        font-size: .75rem;
+        top: 50%;
+
+        right: calc(100% + 0.75rem);
+
+        display: flex;
+        align-items: center;
+
+        width: min(
+            280px,
+            40vw
+        );
+
+        height: 2.5rem;
+
+        padding: 0 0.75rem;
+
+        background:
+            color-mix(
+                in srgb,
+                var(--color-bg) 94%,
+                transparent
+            );
+
+        border:
+            1px solid
+            var(--color-border);
+
+        border-radius: var(--radius-full);
+
+        box-shadow:
+            var(--shadow-md);
+
+        backdrop-filter: blur(16px);
+
+        transform: translateY(-50%);
+
+        overflow: hidden;
+    }
+
+
+    // =========================================================
+    // INPUT
+    // =========================================================
+
+    input {
+        width: 100%;
+        min-width: 0;
+
+        height: 100%;
+
+        padding:
+            0
+            0.35rem;
+
+        color: var(--color-text);
+
+        background: transparent;
+
+        border: none;
+
+        outline: none;
+
+        font-family: var(--font-family-base);
+        font-size: 0.85rem;
+
+
+        &::placeholder {
+            color: var(--color-text-secondary);
+
+            opacity: 0.7;
+        }
+
+
+        // Eliminar estilos nativos del search
+        &::-webkit-search-cancel-button {
+            appearance: none;
+        }
+
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+
+    // =========================================================
+    // CLEAR
+    // =========================================================
+
+    &__clear {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 1.75rem;
+        height: 1.75rem;
+
+        flex-shrink: 0;
+
+        padding: 0;
+
+        color: var(--color-text-secondary);
+
+        background: transparent;
+
+        border: none;
+        border-radius: var(--radius-full);
+
+        cursor: pointer;
+
+        transition:
+            color var(--transition-fast),
+            background-color var(--transition-fast);
+
+
+        &:hover {
+            color: var(--color-text);
+
+            background:
+                var(--color-surface);
+        }
+
+
+        &:focus-visible {
+            outline:
+                2px solid
+                var(--color-primary);
+
+            outline-offset: 2px;
+        }
+    }
+}
+
+
+// =============================================================
+// SEARCH TRANSITION
+// =============================================================
+
+.search-enter-active,
+.search-leave-active {
+    transition:
+        opacity var(--transition-normal),
+        transform var(--transition-normal);
+}
+
+
+.search-enter-from,
+.search-leave-to {
+    opacity: 0;
+
+    transform:
+        translateY(-50%)
+        translateX(0.5rem);
+}
+
+
+.search-enter-to,
+.search-leave-from {
+    opacity: 1;
+
+    transform:
+        translateY(-50%)
+        translateX(0);
+}
+
+
+// =============================================================
+// MOBILE
+// =============================================================
+
+@media (max-width: 768px) {
+
+    .search-button {
+
+        &__form {
+            position: fixed;
+
+            top: 5rem;
+            left: 1rem;
+            right: 1rem;
+
+            width: auto;
+
+            height: 3rem;
+
+            transform: none;
+
+            z-index: 1100;
+
+            box-shadow:
+                var(--shadow-lg);
+        }
+    }
+
+
+    .search-enter-from,
+    .search-leave-to {
+        opacity: 0;
+
+        transform: translateY(-0.5rem);
+    }
+
+
+    .search-enter-to,
+    .search-leave-from {
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+}
+
+
+// =============================================================
+// MOBILE PEQUEÑO
+// =============================================================
+
+@media (max-width: 480px) {
+
+    .search-button {
+
+        &__trigger {
+            width: 2.35rem;
+            height: 2.35rem;
+        }
+
+
+        &__form {
+            top: 4.5rem;
+
+            left: 0.75rem;
+            right: 0.75rem;
+        }
+    }
+}
+
+
+// =============================================================
+// REDUCED MOTION
+// =============================================================
+
+@media (prefers-reduced-motion: reduce) {
+
+    .search-button {
+
+        &__trigger,
+        &__clear {
+            transition: none;
+        }
+    }
+
+
+    .search-enter-active,
+    .search-leave-active {
+        transition: none;
+    }
+}

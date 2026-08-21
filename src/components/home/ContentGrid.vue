@@ -132,18 +132,17 @@ const activeFilter = ref('all')
 // =============================================================
 // CONTENIDO
 // =============================================================
-
 const contents = [
     {
         id: 1,
         number: '01',
-        category: 'Música',
-        categoryValue: 'music',
-        title: 'El Eco del Quejío',
+        category: 'Flamenco',
+        categoryValue: 'flamenco',
+        title: 'Una noche de flamenco en Cádiz',
         description:
-            'Una exploración audiovisual del sonido y la emoción del flamenco contemporáneo.',
+            'Una noche de música, baile y tradición en el corazón de Cádiz.',
         type: 'Vídeo',
-        duration: '04:23',
+        duration: '05:24',
         image:
             'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1400&q=80'
     },
@@ -151,15 +150,15 @@ const contents = [
     {
         id: 2,
         number: '02',
-        category: 'Flamenco',
-        categoryValue: 'flamenco',
-        title: 'Sesión en Vivo',
+        category: 'Música',
+        categoryValue: 'music',
+        title: 'Guitarra flamenca',
         description:
-            'Una sesión íntima capturada desde la perspectiva del escenario.',
-        type: 'Live Session',
+            'El sonido de la guitarra flamenca y la tradición que continúa pasando de generación en generación.',
+        type: 'Sesión',
         duration: '08:16',
         image:
-            'https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=1200&q=80'
+            'https://images.unsplash.com/photo-1525201548942-d8732f6617a0?auto=format&fit=crop&w=1200&q=80'
     },
 
     {
@@ -167,58 +166,56 @@ const contents = [
         number: '03',
         category: 'Cultura',
         categoryValue: 'culture',
-        title: 'Raíces de la Tacita',
+        title: 'Cádiz, sus calles y su gente',
         description:
-            'Historias, lugares y personas que forman parte de Cádiz.',
+            'Un recorrido por algunos de los rincones y las historias que hacen única a la ciudad.',
         type: 'Documental',
         duration: '12:40',
         image:
-            'https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?auto=format&fit=crop&w=1200&q=80'
+            'https://images.unsplash.com/photo-1555881400-74d7acaacd8b?auto=format&fit=crop&w=1200&q=80'
     },
-
     {
         id: 4,
         number: '04',
-        category: 'Música',
-        categoryValue: 'music',
-        title: 'Entre Palmas',
-        description:
-            'Ritmo, improvisación y tradición reunidos en una misma sesión.',
-        type: 'Performance',
-        duration: '05:12',
-        image:
-            'https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?auto=format&fit=crop&w=1200&q=80'
-    },
-
-    {
-        id: 5,
-        number: '05',
         category: 'Flamenco',
         categoryValue: 'flamenco',
-        title: 'La Soleá',
+        title: 'Palmas y compás',
         description:
-            'Una interpretación desnuda de uno de los palos esenciales del flamenco.',
-        type: 'Performance',
-        duration: '06:31',
+            'El ritmo y el compás como parte esencial de la música y el baile flamenco.',
+        type: 'Vídeo',
+        duration: '05:12',
         image:
             'https://images.unsplash.com/photo-1547153760-18fc86324498?auto=format&fit=crop&w=1200&q=80'
     },
 
     {
-        id: 6,
-        number: '06',
+        id: 5,
+        number: '05',
         category: 'Cultura',
         categoryValue: 'culture',
-        title: 'Cádiz Después del Sol',
+        title: 'Tradiciones de Andalucía',
         description:
-            'Una mirada documental a la ciudad cuando cae la noche.',
+            'Costumbres, fiestas y tradiciones que siguen formando parte de la vida andaluza.',
+        type: 'Reportaje',
+        duration: '06:31',
+        image:
+            'https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1200&q=80'
+    },
+
+    {
+        id: 6,
+        number: '06',
+        category: 'Música',
+        categoryValue: 'music',
+        title: 'Música en las calles de Cádiz',
+        description:
+            'Artistas, músicos y sonidos que llenan las calles de la ciudad.',
         type: 'Corto',
         duration: '09:05',
         image:
-            'https://images.unsplash.com/photo-1555881400-74d7acaacd8b?auto=format&fit=crop&w=1200&q=80'
+            'https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?auto=format&fit=crop&w=1200&q=80'
     }
 ]
-
 
 // =============================================================
 // CONTENIDO FILTRADO

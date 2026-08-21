@@ -1,7 +1,9 @@
 <template>
     <header
         class="header"
-        :class="{ 'header--scrolled': isScrolled }"
+        :class="{
+            'header--scrolled': isScrolled
+        }"
     >
 
         <div class="header__inner">
@@ -28,6 +30,9 @@
                 >
                     Inicio
                 </RouterLink>
+
+
+                <!-- Futuras páginas -->
 
                 <!--
                 <RouterLink
@@ -68,7 +73,14 @@
 
             <div class="header__actions">
 
+                <SearchButton />
+
                 <ThemeButton />
+
+
+                <!-- =================================================
+                     MOBILE MENU TRIGGER
+                ================================================== -->
 
                 <button
                     type="button"
@@ -78,21 +90,20 @@
                     }"
                     :aria-expanded="isMenuOpen"
                     aria-controls="mobile-navigation"
-                    aria-label="Abrir menú"
+                    :aria-label="
+                        isMenuOpen
+                            ? 'Cerrar menú'
+                            : 'Abrir menú'
+                    "
                     @click="toggleMenu"
                 >
 
-                    <Menu
-                        v-if="!isMenuOpen"
-                        :size="20"
-                        :stroke-width="1.5"
-                    />
-
-                    <X
-                        v-else
-                        :size="20"
-                        :stroke-width="1.5"
-                    />
+                    <span
+                        class="header__menu-icon"
+                        :class="{
+                            'is-active': isMenuOpen
+                        }"
+                    ></span>
 
                 </button>
 
@@ -105,68 +116,10 @@
              MOBILE NAVIGATION
         ====================================================== -->
 
-        <Transition name="mobile-menu">
-
-            <nav
-                v-if="isMenuOpen"
-                id="mobile-navigation"
-                class="header__mobile-nav"
-                aria-label="Navegación móvil"
-            >
-
-                <RouterLink
-                    to="/"
-                    class="header__mobile-link"
-                    @click="closeMenu"
-                >
-                    <span>01</span>
-                    Inicio
-                </RouterLink>
-
-
-                <!-- Futuras páginas -->
-
-                <!--
-                <RouterLink
-                    to="/videos"
-                    class="header__mobile-link"
-                    @click="closeMenu"
-                >
-                    <span>02</span>
-                    Contenido
-                </RouterLink>
-
-                <RouterLink
-                    to="/artists"
-                    class="header__mobile-link"
-                    @click="closeMenu"
-                >
-                    <span>03</span>
-                    Artistas
-                </RouterLink>
-
-                <RouterLink
-                    to="/about"
-                    class="header__mobile-link"
-                    @click="closeMenu"
-                >
-                    <span>04</span>
-                    Nosotros
-                </RouterLink>
-
-                <RouterLink
-                    to="/shop"
-                    class="header__mobile-link"
-                    @click="closeMenu"
-                >
-                    <span>05</span>
-                    Tienda
-                </RouterLink>
-                -->
-
-            </nav>
-
-        </Transition>
+        <MobileMenu
+            :is-open="isMenuOpen"
+            @close="closeMenu"
+        />
 
     </header>
 </template>
@@ -180,53 +133,67 @@ import {
     watch
 } from 'vue'
 
-import {
-    Menu,
-    X
-} from 'lucide-vue-next'
 
 import Logo from './Logo.vue'
+
+import SearchButton from '../navigation/SearchButton.vue'
 import ThemeButton from '../navigation/ThemeButton.vue'
+import MobileMenu from '../navigation/MobileMenu.vue'
 
 
 const isMenuOpen = ref(false)
+
 const isScrolled = ref(false)
 
 
 const handleScroll = () => {
-    isScrolled.value = window.scrollY > 40
+
+    isScrolled.value =
+        window.scrollY > 40
 }
 
 
 const toggleMenu = () => {
-    isMenuOpen.value = !isMenuOpen.value
+
+    isMenuOpen.value =
+        !isMenuOpen.value
 }
 
 
 const closeMenu = () => {
+
     isMenuOpen.value = false
 }
 
 
-watch(isMenuOpen, (isOpen) => {
-    document.body.style.overflow = isOpen
-        ? 'hidden'
-        : ''
-})
+watch(
+    isMenuOpen,
+    (isOpen) => {
+
+        document.body.style.overflow =
+            isOpen
+                ? 'hidden'
+                : ''
+    }
+)
 
 
 onMounted(() => {
+
     handleScroll()
 
     window.addEventListener(
         'scroll',
         handleScroll,
-        { passive: true }
+        {
+            passive: true
+        }
     )
 })
 
 
 onUnmounted(() => {
+
     window.removeEventListener(
         'scroll',
         handleScroll

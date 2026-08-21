@@ -1,0 +1,65 @@
+// =============================================================
+// TACITA STUDIO — HOME PAGE
+// =============================================================
+
+.homepage {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    min-height: 100vh;
+
+    overflow: hidden;
+}
+
+
+// =============================================================
+// CONTENEDOR DE CONTENIDO
+// =============================================================
+
+.homepage__container {
+    width: min(
+        calc(100% - (var(--content-padding) * 2)),
+        var(--content-width)
+    );
+
+    margin-inline: auto;
+}
+
+
+// =============================================================
+// SECCIONES
+// =============================================================
+
+.homepage__section {
+    width: 100%;
+
+    padding-block: var(--section-spacing);
+}
+
+
+// =============================================================
+// MOBILE
+// =============================================================
+
+@media (max-width: 768px) {
+
+    .homepage__container {
+        width: min(
+            calc(100% - 2rem),
+            var(--content-width)
+        );
+    }
+}
+
+
+// =============================================================
+// REDUCED MOTION
+// =============================================================
+
+@media (prefers-reduced-motion: reduce) {
+
+    .homepage {
+        scroll-behavior: auto;
+    }
+}

@@ -14,7 +14,7 @@
     color: var(--color-text);
 
     text-decoration: none;
-    filter: brightness(10);
+
     transition:
         opacity var(--transition-fast),
         transform var(--transition-fast);
@@ -28,11 +28,21 @@
         display: block;
 
         width: auto;
-        height: clamp(2.75rem, 5vw, 4rem);
+
+        height:
+            clamp(
+                2.75rem,
+                5vw,
+                4rem
+            );
 
         max-width: 180px;
 
         object-fit: contain;
+
+        // MODO CLARO
+        // El logo mantiene su color original #2D1D9A.
+        filter: none;
 
         transition:
             transform var(--transition-normal),
@@ -69,11 +79,36 @@
     // =========================================================
 
     &:focus-visible {
-        outline: 1px solid var(--color-primary);
+        outline:
+            1px solid
+            var(--color-primary);
 
         outline-offset: 6px;
 
-        border-radius: var(--radius-sm);
+        border-radius:
+            var(--radius-sm);
+    }
+}
+
+
+// =============================================================
+// MODO OSCURO
+// =============================================================
+//
+// IMPORTANTE:
+// [data-theme="dark"] está fuera de .logo.
+//
+// El logo original es #2D1D9A.
+// brightness(10) lo lleva prácticamente a blanco.
+//
+
+[data-theme="dark"] {
+
+    .logo {
+
+        img {
+            filter: brightness(10);
+        }
     }
 }
 
