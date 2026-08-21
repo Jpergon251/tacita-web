@@ -9,7 +9,7 @@
         playsinline
         >
         </video>
-        <span>Pabloputero</span>
+        <span>Placeholder</span>
       </section>
 
       <h2 class="section-title">
