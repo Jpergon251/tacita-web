@@ -1,0 +1,656 @@
+// =============================================================
+// TACITA STUDIO — HERO
+// Diseño 2 · Editorial / Cinematográfico
+// =============================================================
+
+.hero {
+    position: relative;
+
+    width: 100%;
+    min-height: 100svh;
+
+    display: flex;
+    align-items: flex-end;
+
+    overflow: hidden;
+
+    isolation: isolate;
+
+    color: var(--color-text);
+
+    // =========================================================
+    // MEDIA
+    // =========================================================
+
+    &__media {
+        position: absolute;
+        inset: 0;
+
+        z-index: -2;
+
+        overflow: hidden;
+    }
+
+
+    &__image {
+        width: 100%;
+        height: 100%;
+
+        display: block;
+
+        object-fit: cover;
+        object-position: center;
+
+        filter:
+            grayscale(25%)
+            contrast(1.08)
+            brightness(0.72);
+
+        transform: scale(1.02);
+
+        animation: hero-image-enter 1.5s ease-out both;
+    }
+
+
+    // =========================================================
+    // OVERLAY
+    // =========================================================
+
+    &__overlay {
+        position: absolute;
+        inset: 0;
+
+        z-index: 1;
+
+        background:
+            linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, 0.45) 0%,
+                rgba(0, 0, 0, 0.08) 35%,
+                rgba(0, 0, 0, 0.18) 55%,
+                rgba(0, 0, 0, 0.92) 100%
+            );
+
+        pointer-events: none;
+    }
+
+
+    // =========================================================
+    // CONTENIDO
+    // =========================================================
+
+    &__content {
+        position: relative;
+
+        z-index: 2;
+
+        width: min(
+            100%,
+            var(--content-width)
+        );
+
+        margin-inline: auto;
+
+        padding-inline: var(--content-padding);
+        padding-bottom: clamp(5rem, 12vh, 9rem);
+
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        animation: hero-content-enter 1s 0.2s ease-out both;
+    }
+
+
+    // =========================================================
+    // EYEBROW
+    // =========================================================
+
+    &__eyebrow {
+        display: flex;
+        align-items: center;
+
+        gap: 0.75rem;
+
+        margin-bottom: 1.5rem;
+
+        color: var(--color-accent);
+
+        font-family: var(--font-family-base);
+        font-size: 0.7rem;
+        font-weight: 600;
+
+        letter-spacing: 0.18em;
+        line-height: 1.2;
+
+        text-transform: uppercase;
+    }
+
+
+    &__eyebrow span {
+        width: 2.5rem;
+        height: 1px;
+
+        display: block;
+
+        background: currentColor;
+    }
+
+
+    // =========================================================
+    // TÍTULO
+    // =========================================================
+
+    &__title {
+        margin: 0;
+
+        max-width: 900px;
+
+        font-family: var(--font-family-display);
+
+        font-size:
+            clamp(
+                4rem,
+                10vw,
+                8.5rem
+            );
+
+        font-weight: 700;
+
+        line-height: 0.85;
+
+        letter-spacing: -0.045em;
+
+        text-transform: uppercase;
+
+        color: #ffffff;
+
+        text-wrap: balance;
+
+        text-shadow:
+            0 4px 30px rgba(0, 0, 0, 0.3);
+
+        em {
+            display: block;
+
+            color: var(--color-accent);
+
+            font-style: italic;
+
+            font-weight: 600;
+
+            text-transform: none;
+
+            letter-spacing: -0.055em;
+        }
+    }
+
+
+    // =========================================================
+    // DESCRIPCIÓN
+    // =========================================================
+
+    &__description {
+        max-width: 480px;
+
+        margin: 2rem 0 0;
+
+        color: rgba(255, 255, 255, 0.78);
+
+        font-family: var(--font-family-base);
+        font-size: clamp(1rem, 1.5vw, 1.15rem);
+
+        line-height: 1.7;
+
+        text-wrap: balance;
+    }
+
+
+    // =========================================================
+    // ACCIONES
+    // =========================================================
+
+    &__actions {
+        display: flex;
+        align-items: center;
+
+        gap: 0.75rem;
+
+        margin-top: 2.25rem;
+    }
+
+
+    &__button {
+        min-height: 48px;
+
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        padding:
+            0.8rem
+            1.5rem;
+
+        border: 1px solid transparent;
+
+        color: #ffffff;
+
+        font-family: var(--font-family-base);
+        font-size: 0.7rem;
+        font-weight: 600;
+
+        letter-spacing: 0.12em;
+
+        text-decoration: none;
+        text-transform: uppercase;
+
+        transition:
+            background-color var(--transition-normal),
+            border-color var(--transition-normal),
+            color var(--transition-normal),
+            transform var(--transition-normal),
+            letter-spacing var(--transition-normal);
+
+
+        &:hover {
+            transform: translateY(-2px);
+
+            letter-spacing: 0.16em;
+        }
+
+
+        &:focus-visible {
+            outline: 2px solid #ffffff;
+
+            outline-offset: 4px;
+        }
+
+
+        &:active {
+            transform: translateY(0);
+        }
+
+
+        &--primary {
+            background: var(--color-primary);
+
+            border-color: var(--color-primary);
+
+            &:hover {
+                background: var(--color-hover);
+
+                border-color: var(--color-hover);
+            }
+        }
+
+
+        &--secondary {
+            border-color: rgba(255, 255, 255, 0.45);
+
+            background: rgba(0, 0, 0, 0.12);
+
+            backdrop-filter: blur(8px);
+
+            &:hover {
+                border-color: #ffffff;
+
+                background: rgba(255, 255, 255, 0.08);
+            }
+        }
+    }
+
+
+    // =========================================================
+    // META
+    // =========================================================
+
+    &__meta {
+        position: absolute;
+
+        right: var(--content-padding);
+        bottom: 2rem;
+
+        z-index: 3;
+
+        display: flex;
+        align-items: center;
+
+        gap: 0.75rem;
+
+        color: rgba(255, 255, 255, 0.65);
+
+        font-family: var(--font-family-base);
+        font-size: 0.65rem;
+        font-weight: 600;
+
+        letter-spacing: 0.16em;
+
+        text-transform: uppercase;
+    }
+
+
+    &__meta-line {
+        width: 2rem;
+        height: 1px;
+
+        background: currentColor;
+    }
+
+
+    // =========================================================
+    // SCROLL INDICATOR
+    // =========================================================
+
+    &__scroll {
+        position: absolute;
+
+        right: 50%;
+        bottom: 2rem;
+
+        z-index: 3;
+
+        display: flex;
+        align-items: center;
+
+        gap: 0.75rem;
+
+        color: rgba(255, 255, 255, 0.65);
+
+        font-family: var(--font-family-base);
+        font-size: 0.6rem;
+        font-weight: 600;
+
+        letter-spacing: 0.18em;
+
+        text-decoration: none;
+        text-transform: uppercase;
+
+        transform: translateX(50%);
+
+        transition:
+            color var(--transition-fast);
+
+
+        &:hover {
+            color: #ffffff;
+        }
+
+
+        &:focus-visible {
+            outline: 2px solid #ffffff;
+
+            outline-offset: 5px;
+        }
+    }
+
+
+    &__scroll-line {
+        width: 40px;
+        height: 1px;
+
+        position: relative;
+
+        overflow: hidden;
+
+        background: rgba(255, 255, 255, 0.3);
+
+
+        &::after {
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background: #ffffff;
+
+            transform: translateX(-100%);
+
+            animation: scroll-line 2s ease-in-out infinite;
+        }
+    }
+}
+
+
+// =============================================================
+// TABLET
+// =============================================================
+
+@media (max-width: 1024px) {
+
+    .hero {
+
+        &__content {
+            padding-bottom: 6rem;
+        }
+
+
+        &__title {
+            font-size: clamp(
+                4rem,
+                11vw,
+                7rem
+            );
+        }
+
+
+        &__meta {
+            display: none;
+        }
+    }
+}
+
+
+// =============================================================
+// MÓVIL
+// =============================================================
+
+@media (max-width: 768px) {
+
+    .hero {
+        min-height: 100svh;
+
+
+        &__image {
+            object-position: 60% center;
+
+            filter:
+                grayscale(15%)
+                contrast(1.05)
+                brightness(0.65);
+        }
+
+
+        &__overlay {
+            background:
+                linear-gradient(
+                    to bottom,
+                    rgba(0, 0, 0, 0.35),
+                    rgba(0, 0, 0, 0.88) 72%,
+                    rgba(0, 0, 0, 0.96)
+                );
+        }
+
+
+        &__content {
+            padding-inline: 1.25rem;
+
+            padding-bottom: 7rem;
+        }
+
+
+        &__eyebrow {
+            margin-bottom: 1.25rem;
+
+            font-size: 0.6rem;
+
+            letter-spacing: 0.14em;
+        }
+
+
+        &__eyebrow span {
+            width: 1.75rem;
+        }
+
+
+        &__title {
+            font-size: clamp(
+                3.5rem,
+                17vw,
+                6rem
+            );
+
+            line-height: 0.88;
+        }
+
+
+        &__description {
+            max-width: 390px;
+
+            margin-top: 1.5rem;
+
+            font-size: 0.95rem;
+
+            line-height: 1.6;
+        }
+
+
+        &__actions {
+            width: 100%;
+
+            margin-top: 1.75rem;
+
+            flex-direction: column;
+            align-items: stretch;
+
+            gap: 0.6rem;
+        }
+
+
+        &__button {
+            width: 100%;
+        }
+
+
+        &__scroll {
+            bottom: 1.5rem;
+        }
+    }
+}
+
+
+// =============================================================
+// MÓVIL PEQUEÑO
+// =============================================================
+
+@media (max-width: 480px) {
+
+    .hero {
+
+        &__content {
+            padding-inline: 1rem;
+            padding-bottom: 6rem;
+        }
+
+
+        &__title {
+            font-size: clamp(
+                3rem,
+                18vw,
+                4.5rem
+            );
+        }
+
+
+        &__description {
+            font-size: 0.9rem;
+        }
+
+
+        &__scroll {
+            display: none;
+        }
+    }
+}
+
+
+// =============================================================
+// ANIMACIONES
+// =============================================================
+
+@keyframes hero-image-enter {
+
+    from {
+        opacity: 0;
+
+        transform: scale(1.08);
+    }
+
+    to {
+        opacity: 1;
+
+        transform: scale(1.02);
+    }
+}
+
+
+@keyframes hero-content-enter {
+
+    from {
+        opacity: 0;
+
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+}
+
+
+@keyframes scroll-line {
+
+    0% {
+        transform: translateX(-100%);
+    }
+
+    50% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+
+// =============================================================
+// REDUCCIÓN DE MOVIMIENTO
+// =============================================================
+
+@media (prefers-reduced-motion: reduce) {
+
+    .hero {
+
+        &__image {
+            animation: none;
+        }
+
+
+        &__content {
+            animation: none;
+        }
+
+
+        &__scroll-line {
+            animation: none;
+        }
+
+
+        &__button {
+            transition: none;
+        }
+    }
+}

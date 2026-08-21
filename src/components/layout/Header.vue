@@ -1,161 +1,237 @@
 <template>
-    <header class="header">
+    <header
+        class="header"
+        :class="{ 'header--scrolled': isScrolled }"
+    >
 
-        <!-- =====================================================
-             BOTÓN MOBILE
-        ====================================================== -->
+        <div class="header__inner">
 
-        <button
-            type="button"
-            class="menu-toggle"
-            @click="isMenuOpen = !isMenuOpen"
-            :aria-expanded="isMenuOpen"
-            :aria-label="
-                isMenuOpen
-                    ? 'Cerrar menú'
-                    : 'Abrir menú'
-            "
-        >
-            <Menu v-if="!isMenuOpen" />
-            <X v-else />
-        </button>
+            <!-- =================================================
+                 LOGO
+            ================================================== -->
 
-
-        <!-- =====================================================
-             NAVBAR
-        ====================================================== -->
-
-        <nav
-            class="navbar"
-            :class="{ active: isMenuOpen }"
-        >
-
-            <button
-                type="button"
-                class="menu-toggle"
-                @click="isMenuOpen = false"
-                aria-label="Cerrar menú"
-            >
-                <X />
-            </button>
-
-
-            <router-link
-                to="/"
-                @click="isMenuOpen = false"
-            >
-                Inicio
-            </router-link>
+            <Logo />
 
 
             <!-- =================================================
-                 PÁGINAS FUTURAS
+                 DESKTOP NAVIGATION
             ================================================== -->
 
-            <!--
-            <router-link
-                to="/videos"
-                @click="isMenuOpen = false"
+            <nav
+                class="header__nav"
+                aria-label="Navegación principal"
             >
-                Videos
-            </router-link>
 
-            <router-link
-                to="/collections"
-                @click="isMenuOpen = false"
-            >
-                Colecciones
-            </router-link>
+                <RouterLink
+                    to="/"
+                    class="header__link"
+                >
+                    Inicio
+                </RouterLink>
 
-            <router-link
-                to="/shop"
-                @click="isMenuOpen = false"
-            >
-                Tienda
-            </router-link>
-            -->
+                <!--
+                <RouterLink
+                    to="/videos"
+                    class="header__link"
+                >
+                    Contenido
+                </RouterLink>
 
-        </nav>
+                <RouterLink
+                    to="/artists"
+                    class="header__link"
+                >
+                    Artistas
+                </RouterLink>
+
+                <RouterLink
+                    to="/about"
+                    class="header__link"
+                >
+                    Nosotros
+                </RouterLink>
+
+                <RouterLink
+                    to="/shop"
+                    class="header__link"
+                >
+                    Tienda
+                </RouterLink>
+                -->
+
+            </nav>
+
+
+            <!-- =================================================
+                 ACTIONS
+            ================================================== -->
+
+            <div class="header__actions">
+
+                <ThemeButton />
+
+                <button
+                    type="button"
+                    class="header__menu-button"
+                    :class="{
+                        'is-active': isMenuOpen
+                    }"
+                    :aria-expanded="isMenuOpen"
+                    aria-controls="mobile-navigation"
+                    aria-label="Abrir menú"
+                    @click="toggleMenu"
+                >
+
+                    <Menu
+                        v-if="!isMenuOpen"
+                        :size="20"
+                        :stroke-width="1.5"
+                    />
+
+                    <X
+                        v-else
+                        :size="20"
+                        :stroke-width="1.5"
+                    />
+
+                </button>
+
+            </div>
+
+        </div>
 
 
         <!-- =====================================================
-             LOGO
+             MOBILE NAVIGATION
         ====================================================== -->
 
-        <Logo />
+        <Transition name="mobile-menu">
 
-
-        <!-- =====================================================
-             ACTIONS
-        ====================================================== -->
-
-        <section class="actions">
-
-            <!-- BUSCADOR -->
-
-            <input
-                type="search"
-                placeholder="Buscar..."
-                aria-label="Buscar"
-            />
-
-
-            <!-- FAVORITOS -->
-
-            <button
-                type="button"
-                aria-label="Favoritos"
+            <nav
+                v-if="isMenuOpen"
+                id="mobile-navigation"
+                class="header__mobile-nav"
+                aria-label="Navegación móvil"
             >
-                <Bookmark />
-            </button>
+
+                <RouterLink
+                    to="/"
+                    class="header__mobile-link"
+                    @click="closeMenu"
+                >
+                    <span>01</span>
+                    Inicio
+                </RouterLink>
 
 
-            <!-- CARRITO -->
+                <!-- Futuras páginas -->
 
-            <button
-                type="button"
-                aria-label="Carrito"
-            >
-                <ShoppingBagIcon />
-            </button>
+                <!--
+                <RouterLink
+                    to="/videos"
+                    class="header__mobile-link"
+                    @click="closeMenu"
+                >
+                    <span>02</span>
+                    Contenido
+                </RouterLink>
 
+                <RouterLink
+                    to="/artists"
+                    class="header__mobile-link"
+                    @click="closeMenu"
+                >
+                    <span>03</span>
+                    Artistas
+                </RouterLink>
 
-            <!-- CAMBIO DE TEMA -->
+                <RouterLink
+                    to="/about"
+                    class="header__mobile-link"
+                    @click="closeMenu"
+                >
+                    <span>04</span>
+                    Nosotros
+                </RouterLink>
 
-            <ThemeButton />
+                <RouterLink
+                    to="/shop"
+                    class="header__mobile-link"
+                    @click="closeMenu"
+                >
+                    <span>05</span>
+                    Tienda
+                </RouterLink>
+                -->
 
-        </section>
+            </nav>
+
+        </Transition>
 
     </header>
 </template>
 
 
 <script setup>
-import { ref, watch } from 'vue'
+import {
+    onMounted,
+    onUnmounted,
+    ref,
+    watch
+} from 'vue'
 
 import {
-    Bookmark,
-    ShoppingBagIcon,
     Menu,
     X
 } from 'lucide-vue-next'
 
 import Logo from './Logo.vue'
-import ThemeButton from '../theme/ThemeButton.vue'
+import ThemeButton from '../navigation/ThemeButton.vue'
 
-
-// =============================================================
-// MOBILE MENU
-// =============================================================
 
 const isMenuOpen = ref(false)
+const isScrolled = ref(false)
 
 
-// Bloqueamos el scroll del body mientras el menú móvil está abierto.
+const handleScroll = () => {
+    isScrolled.value = window.scrollY > 40
+}
+
+
+const toggleMenu = () => {
+    isMenuOpen.value = !isMenuOpen.value
+}
+
+
+const closeMenu = () => {
+    isMenuOpen.value = false
+}
+
 
 watch(isMenuOpen, (isOpen) => {
     document.body.style.overflow = isOpen
         ? 'hidden'
         : ''
+})
+
+
+onMounted(() => {
+    handleScroll()
+
+    window.addEventListener(
+        'scroll',
+        handleScroll,
+        { passive: true }
+    )
+})
+
+
+onUnmounted(() => {
+    window.removeEventListener(
+        'scroll',
+        handleScroll
+    )
+
+    document.body.style.overflow = ''
 })
 </script>

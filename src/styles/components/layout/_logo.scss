@@ -1,0 +1,147 @@
+// =============================================================
+// TACITA STUDIO — LOGO
+// =============================================================
+
+.logo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    width: fit-content;
+
+    color: var(--color-text);
+
+    text-decoration: none;
+    filter: brightness(10);
+    transition:
+        opacity var(--transition-fast),
+        transform var(--transition-fast);
+
+
+    // =========================================================
+    // IMAGEN
+    // =========================================================
+
+    img {
+        display: block;
+
+        width: auto;
+        height: clamp(2.75rem, 5vw, 4rem);
+
+        max-width: 180px;
+
+        object-fit: contain;
+
+        transition:
+            transform var(--transition-normal),
+            filter var(--transition-normal);
+    }
+
+
+    // =========================================================
+    // HOVER
+    // =========================================================
+
+    @media (hover: hover) {
+
+        &:hover {
+
+            img {
+                transform: scale(1.035);
+            }
+        }
+    }
+
+
+    // =========================================================
+    // ACTIVE
+    // =========================================================
+
+    &:active {
+        transform: scale(0.97);
+    }
+
+
+    // =========================================================
+    // FOCUS
+    // =========================================================
+
+    &:focus-visible {
+        outline: 1px solid var(--color-primary);
+
+        outline-offset: 6px;
+
+        border-radius: var(--radius-sm);
+    }
+}
+
+
+// =============================================================
+// TABLET
+// =============================================================
+
+@media (max-width: 1024px) {
+
+    .logo {
+
+        img {
+            height: 3.5rem;
+
+            max-width: 160px;
+        }
+    }
+}
+
+
+// =============================================================
+// MOBILE
+// =============================================================
+
+@media (max-width: 768px) {
+
+    .logo {
+
+        img {
+            height: 3.25rem;
+
+            max-width: 145px;
+        }
+    }
+}
+
+
+// =============================================================
+// MOBILE PEQUEÑO
+// =============================================================
+
+@media (max-width: 480px) {
+
+    .logo {
+
+        img {
+            height: 3rem;
+
+            max-width: 130px;
+        }
+    }
+}
+
+
+// =============================================================
+// REDUCCIÓN DE MOVIMIENTO
+// =============================================================
+
+@media (prefers-reduced-motion: reduce) {
+
+    .logo,
+    .logo img {
+        transition: none;
+    }
+
+
+    .logo:hover img {
+        transform: none;
+    }
+}

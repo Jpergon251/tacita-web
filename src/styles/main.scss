@@ -1,0 +1,63 @@
+// =============================================================
+// TACITA STUDIO — MAIN STYLESHEET
+// Diseño 2 · Editorial / Cinematográfico
+// =============================================================
+
+
+// =============================================================
+// BASE
+// =============================================================
+
+@use './base/variables';
+// @use './base/variables2';
+
+@use './base/mixins';
+@use './base/reset';
+@use './base/global';
+
+
+// =============================================================
+// LAYOUT
+// =============================================================
+
+@use './components/layout/header';
+@use './components/layout/footer';
+@use './components/layout/logo';
+
+
+// =============================================================
+// HOME COMPONENTS
+// =============================================================
+
+@use './components/home/hero';
+
+@use './components/home/featuredcontent';
+
+@use './components/home/contentgrid';
+
+@use './components/home/contentcard';
+
+
+// =============================================================
+// NAVIGATION
+// =============================================================
+
+@use './components/navigation/mobilemenu';
+
+@use './components/navigation/searchbutton';
+
+@use './components/navigation/themebutton';
+
+
+// =============================================================
+// UI
+// =============================================================
+
+@use './components/ui/ui';
+
+
+// =============================================================
+// PAGES
+// =============================================================
+
+@use './pages/homepage';

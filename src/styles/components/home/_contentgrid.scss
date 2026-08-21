@@ -1,0 +1,294 @@
+// =============================================================
+// TACITA STUDIO — CONTENT GRID
+// =============================================================
+
+.content-grid {
+    width: 100%;
+    max-width: var(--content-width);
+
+    margin-inline: auto;
+
+    padding-inline: var(--content-padding);
+}
+
+
+// =============================================================
+// HEADER
+// =============================================================
+
+.content-grid__header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    gap: 2rem;
+
+    margin-bottom: clamp(2rem, 5vw, 4rem);
+
+    padding-bottom: 1.5rem;
+
+    border-bottom: 1px solid var(--color-border);
+}
+
+
+// =============================================================
+// HEADING
+// =============================================================
+
+.content-grid__heading {
+    display: flex;
+    flex-direction: column;
+
+    gap: 0.75rem;
+}
+
+
+.content-grid__eyebrow {
+    color: var(--color-primary);
+
+    font-family: var(--font-family-base);
+    font-size: 0.7rem;
+    font-weight: 600;
+
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+
+.content-grid__title {
+    margin: 0;
+
+    color: var(--color-text);
+
+    font-family: var(--font-family-display);
+    font-size: clamp(2rem, 4vw, 3.25rem);
+    font-weight: 600;
+
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+}
+
+
+// =============================================================
+// FILTROS
+// =============================================================
+
+.content-grid__filters {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    justify-content: flex-end;
+
+    gap: 0.5rem;
+}
+
+
+.content-grid__filter {
+    position: relative;
+
+    padding: 0.65rem 0.85rem;
+
+    border: 1px solid transparent;
+
+    background: transparent;
+
+    color: var(--color-text-secondary);
+
+    font-family: var(--font-family-base);
+    font-size: 0.7rem;
+    font-weight: 600;
+
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    transition:
+        color var(--transition-fast),
+        border-color var(--transition-fast),
+        background-color var(--transition-fast);
+
+
+    &:hover {
+        color: var(--color-text);
+    }
+
+
+    &.is-active {
+        color: var(--color-primary);
+
+        border-color: var(--color-primary);
+
+        background:
+            color-mix(
+                in srgb,
+                var(--color-primary) 6%,
+                transparent
+            );
+    }
+
+
+    &:focus-visible {
+        outline: 1px solid var(--color-primary);
+
+        outline-offset: 3px;
+    }
+}
+
+
+// =============================================================
+// GRID
+// =============================================================
+
+.content-grid__list {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap:
+        clamp(1rem, 2vw, 1.5rem);
+}
+
+
+// =============================================================
+// EMPTY STATE
+// =============================================================
+
+.content-grid__empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 250px;
+
+    padding: 2rem;
+
+    border:
+        1px solid
+        var(--color-border);
+
+    color: var(--color-text-secondary);
+
+    text-align: center;
+}
+
+
+.content-grid__empty-number {
+    margin-bottom: 1rem;
+
+    color: var(--color-primary);
+
+    font-family: var(--font-family-display);
+    font-size: 3rem;
+    font-style: italic;
+}
+
+
+.content-grid__empty p {
+    margin: 0;
+
+    font-size: 0.9rem;
+}
+
+
+// =============================================================
+// TABLET
+// =============================================================
+
+@media (max-width: 900px) {
+
+    .content-grid__header {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 1.5rem;
+    }
+
+
+    .content-grid__filters {
+        justify-content: flex-start;
+    }
+}
+
+
+// =============================================================
+// MÓVIL
+// =============================================================
+
+@media (max-width: 640px) {
+
+    .content-grid {
+        padding-inline: 1rem;
+    }
+
+
+    .content-grid__header {
+        margin-bottom: 2rem;
+
+        padding-bottom: 1.25rem;
+    }
+
+
+    .content-grid__title {
+        font-size: 2rem;
+    }
+
+
+    .content-grid__filters {
+        width: 100%;
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 0.5rem;
+    }
+
+
+    .content-grid__filter {
+        width: 100%;
+    }
+
+
+    .content-grid__list {
+        grid-template-columns: 1fr;
+
+        gap: 1rem;
+    }
+}
+
+
+// =============================================================
+// MÓVIL PEQUEÑO
+// =============================================================
+
+@media (max-width: 400px) {
+
+    .content-grid__filters {
+        grid-template-columns: 1fr 1fr;
+    }
+
+
+    .content-grid__filter {
+        padding-inline: 0.5rem;
+
+        font-size: 0.65rem;
+    }
+}
+
+
+// =============================================================
+// REDUCCIÓN DE MOVIMIENTO
+// =============================================================
+
+@media (prefers-reduced-motion: reduce) {
+
+    .content-grid__filter {
+        transition: none;
+    }
+}

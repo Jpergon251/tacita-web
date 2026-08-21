@@ -1,0 +1,111 @@
+// =============================================================
+// TACITA STUDIO — THEME BUTTON
+// Diseño 2 · Editorial
+// =============================================================
+
+.theme-button {
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 2.5rem;
+    height: 2.5rem;
+
+    padding: 0;
+
+    border: 1px solid var(--color-border);
+
+    border-radius: var(--radius-full);
+
+    color: var(--color-text);
+
+    background: transparent;
+
+    cursor: pointer;
+
+    overflow: hidden;
+
+    transition:
+        color var(--transition-fast),
+        background-color var(--transition-fast),
+        border-color var(--transition-fast),
+        transform var(--transition-fast);
+
+
+    // =========================================================
+    // ICONO
+    // =========================================================
+
+    &__icon {
+        width: 1.1rem;
+        height: 1.1rem;
+
+        flex-shrink: 0;
+
+        transition:
+            transform var(--transition-normal);
+    }
+
+
+    // =========================================================
+    // HOVER
+    // =========================================================
+
+    @media (hover: hover) {
+
+        &:hover {
+            color: var(--color-primary);
+
+            background-color:
+                color-mix(
+                    in srgb,
+                    var(--color-primary) 8%,
+                    transparent
+                );
+
+            border-color: var(--color-primary);
+
+            transform: translateY(-1px);
+        }
+
+
+        &:hover &__icon {
+            transform: rotate(12deg);
+        }
+    }
+
+
+    // =========================================================
+    // ACTIVE
+    // =========================================================
+
+    &:active {
+        transform: scale(0.94);
+    }
+
+
+    // =========================================================
+    // FOCUS
+    // =========================================================
+
+    &:focus-visible {
+        outline: none;
+
+        box-shadow: var(--focus-ring);
+    }
+}
+
+
+// =============================================================
+// REDUCCIÓN DE MOVIMIENTO
+// =============================================================
+
+@media (prefers-reduced-motion: reduce) {
+
+    .theme-button,
+    .theme-button__icon {
+        transition: none;
+    }
+}
